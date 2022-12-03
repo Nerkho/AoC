@@ -27,88 +27,58 @@ func main() {
 	scoreB = 0
 	for scanner.Scan() {
 		x := strings.Fields(scanner.Text())
-		result := score1(x)
-		scoreA = scoreA + result
-		result = score2(x)
-		scoreB = scoreB + result
+		resultA, resultB := score(x)
+		scoreA = scoreA + resultA
+		scoreB = scoreB + resultB
 	}
-
 	fmt.Println("Part A :", scoreA)
 	fmt.Println("Part B :", scoreB)
 }
 
-func score1(game []string) int {
-	var score int
+func score(game []string) (int, int) {
+	var scoreA int
+	var scoreB int
 
 	switch game[0] {
 	case "A":
 		switch game[1] {
 		case "X":
-			score = 4
+			scoreA = 4
+			scoreB = 3
 		case "Y":
-			score = 8
+			scoreA = 8
+			scoreB = 4
 		case "Z":
-			score = 3
+			scoreA = 3
+			scoreB = 8
 		}
 
 	case "B":
 		switch game[1] {
 		case "X":
-			score = 1
+			scoreA = 1
+			scoreB = 1
 		case "Y":
-			score = 5
+			scoreA = 5
+			scoreB = 5
 		case "Z":
-			score = 9
+			scoreA = 9
+			scoreB = 9
 		}
 
 	case "C":
 		switch game[1] {
 		case "X":
-			score = 7
+			scoreA = 7
+			scoreB = 2
 		case "Y":
-			score = 2
+			scoreA = 2
+			scoreB = 6
 		case "Z":
-			score = 6
+			scoreA = 6
+			scoreB = 7
 		}
 	}
 
-	return score
-}
-
-func score2(game []string) int {
-	var score int
-
-	switch game[0] {
-	case "A":
-		switch game[1] {
-		case "X":
-			score = 3
-		case "Y":
-			score = 4
-		case "Z":
-			score = 8
-		}
-
-	case "B":
-		switch game[1] {
-		case "X":
-			score = 1
-		case "Y":
-			score = 5
-		case "Z":
-			score = 9
-		}
-
-	case "C":
-		switch game[1] {
-		case "X":
-			score = 2
-		case "Y":
-			score = 6
-		case "Z":
-			score = 7
-		}
-	}
-
-	return score
+	return scoreA, scoreB
 }
