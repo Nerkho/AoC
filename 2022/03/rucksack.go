@@ -7,6 +7,10 @@ import (
 	"strings"
 )
 
+var prioSumA int
+var prioSumB int
+var itemGroup []string
+
 func check(err error) {
 	fmt.Println(err)
 	return
@@ -20,26 +24,54 @@ func main() {
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
 
-	var itemGroup []string
-	var prioSum int
 	for scanner.Scan() {
-
 		x := scanner.Text()
-		item := x
-		itemGroup = append(itemGroup, item)
+		prioSumA = prioSumA + partA(x)
+		prioSumB = prioSumB + partB(x)
+	}
 
-		if len(itemGroup) == 3 {
-			sharedType := compareItem(itemGroup)
-			prio := calcPrio(sharedType)
-			prioSum = prioSum + prio
-			itemGroup = nil
+	fmt.Println("Part A :", prioSumA)
+	fmt.Println("Part B :", prioSumB)
+}
+
+func partA(x string) int {
+
+	var prio int
+	item1 := x[0 : len(x)/2]
+	item2 := x[len(x)/2:]
+	sharedType := compareItemA(item1, item2)
+	prio = calcPrio(sharedType)
+
+	return prio
+}
+
+func compareItemA(item1 string, item2 string) string {
+	var sharedType string
+
+	c := []rune(item1)
+	for i := 0; i < len(item1); i++ {
+		c := string(c[i])
+		if strings.Contains(item2, c) {
+			sharedType = c
 		}
 	}
 
-	fmt.Println(prioSum)
+	return sharedType
 }
 
-func compareItem(itemGroup []string) string {
+func partB(item string) int {
+	itemGroup = append(itemGroup, item)
+	var prio int
+
+	if len(itemGroup) == 3 {
+		sharedType := compareItemB(itemGroup)
+		prio = calcPrio(sharedType)
+		itemGroup = nil
+	}
+	return prio
+}
+
+func compareItemB(itemGroup []string) string {
 	var sharedType string
 
 	x := []int{len(itemGroup[0]), len(itemGroup[1]), len(itemGroup[2])}
