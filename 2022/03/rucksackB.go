@@ -37,8 +37,6 @@ func main() {
 	}
 
 	fmt.Println(prioSum)
-
-	file.Close()
 }
 
 func compareItem(itemGroup []string) string {

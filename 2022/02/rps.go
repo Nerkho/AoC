@@ -34,8 +34,6 @@ func main() {
 	}
 	fmt.Println(scoreA)
 	fmt.Println(scoreB)
-
-	file.Close()
 }
 
 func score1(game []string) int {

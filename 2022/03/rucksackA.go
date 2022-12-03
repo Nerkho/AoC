@@ -31,8 +31,6 @@ func main() {
 		prioSum = prioSum + prio
 	}
 	fmt.Println(prioSum)
-
-	file.Close()
 }
 
 func compareItem(item1 string, item2 string) string {
