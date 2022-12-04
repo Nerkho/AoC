@@ -24,10 +24,10 @@ func main() {
 	for scanner.Scan() {
 		pair := strings.Split(scanner.Text(), ",")
 		if comparePairA(pair) {
-			a = a + 1
+			a++
 		}
 		if comparePairB(pair) {
-			b = b + 1
+			b++
 		}
 	}
 	fmt.Println("Part A :", a)
