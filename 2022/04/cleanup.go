@@ -84,10 +84,3 @@ func contains(s []string, e string) bool {
 	}
 	return false
 }
-
-func max(x, y int) int {
-	if y > x {
-		return y
-	}
-	return x
-}
