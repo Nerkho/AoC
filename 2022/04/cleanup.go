@@ -35,23 +35,21 @@ func main() {
 }
 
 func comparePairA(pair []string) bool {
-	var pairInPair bool
 	left := fullRange(pair[0])
 	right := fullRange(pair[1])
 	if contains(left, right[0]) && contains(left, right[len(right)-1]) || contains(right, left[0]) && contains(right, left[len(left)-1]) {
-		pairInPair = true
+		return true
 	}
-	return pairInPair
+	return false
 }
 
 func comparePairB(pair []string) bool {
-	var pairInPair bool
 	left := fullRange(pair[0])
 	right := fullRange(pair[1])
 	if overlap(left, right) || overlap(right, left) {
-		pairInPair = true
+		return true
 	}
-	return pairInPair
+	return false
 }
 
 func fullRange(oneSide string) []string {
@@ -67,13 +65,12 @@ func fullRange(oneSide string) []string {
 }
 
 func overlap(s, e []string) bool {
-	var b bool
 	for _, a := range e {
 		if contains(s, a) {
-			b = true
+			return true
 		}
 	}
-	return b
+	return false
 }
 
 func contains(s []string, e string) bool {
