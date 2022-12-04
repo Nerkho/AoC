@@ -19,10 +19,8 @@ func main() {
 	file, err := os.Open("input")
 	check(err)
 	defer file.Close()
-
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
-
 	scoreA = 0
 	scoreB = 0
 	for scanner.Scan() {
@@ -38,7 +36,6 @@ func main() {
 func score(game []string) (int, int) {
 	var scoreA int
 	var scoreB int
-
 	switch game[0] {
 	case "A":
 		switch game[1] {
@@ -52,7 +49,6 @@ func score(game []string) (int, int) {
 			scoreA = 3
 			scoreB = 8
 		}
-
 	case "B":
 		switch game[1] {
 		case "X":
@@ -65,7 +61,6 @@ func score(game []string) (int, int) {
 			scoreA = 9
 			scoreB = 9
 		}
-
 	case "C":
 		switch game[1] {
 		case "X":
@@ -79,6 +74,5 @@ func score(game []string) (int, int) {
 			scoreB = 7
 		}
 	}
-
 	return scoreA, scoreB
 }
