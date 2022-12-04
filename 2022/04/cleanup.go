@@ -38,12 +38,8 @@ func comparePairA(pair []string) bool {
 	var pairInPair bool
 	left := fullRange(pair[0])
 	right := fullRange(pair[1])
-	x := max(len(left), len(right))
-	if x == len(left) {
-		pairInPair = contains(left, right[0]) && contains(left, right[len(right)-1])
-	}
-	if x == len(right) {
-		pairInPair = contains(right, left[0]) && contains(right, left[len(left)-1])
+	if contains(left, right[0]) && contains(left, right[len(right)-1]) || contains(right, left[0]) && contains(right, left[len(left)-1]) {
+		pairInPair = true
 	}
 	return pairInPair
 }
@@ -52,12 +48,8 @@ func comparePairB(pair []string) bool {
 	var pairInPair bool
 	left := fullRange(pair[0])
 	right := fullRange(pair[1])
-	x := max(len(left), len(right))
-	if x == len(left) {
-		pairInPair = overlap(left, right)
-	}
-	if x == len(right) {
-		pairInPair = overlap(right, left)
+	if overlap(left, right) || overlap(right, left) {
+		pairInPair = true
 	}
 	return pairInPair
 }
