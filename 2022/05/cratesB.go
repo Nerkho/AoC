@@ -49,9 +49,6 @@ func move(moves []string, stacks map[int][]string) {
 	posA, err := strconv.Atoi(moves[3])
 	posB, err := strconv.Atoi(moves[5])
 	check(err)
-
-	fmt.Println(amnt, posA, posB)
-
 	for i := amnt - 1; i >= 0; i-- {
 		toMove := stacks[posA][i]
 		remove(stacks[posA], i)
