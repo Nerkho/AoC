@@ -33,7 +33,6 @@ func common(input string, length int) int {
 		m := map[byte]int{}
 		for j := 0; j < length; j++ {
 			m[input[i-j]]++
-			fmt.Println(m)
 		}
 		if len(m) == length {
 			numberChar = i + 1
